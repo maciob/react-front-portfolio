@@ -13,5 +13,4 @@ ENV PATH $NODE_PATH:$PATH
 WORKDIR app/
 COPY . .
 RUN npm install
-RUN npm install react
 ENTRYPOINT npm run dev -- --host

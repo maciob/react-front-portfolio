@@ -10,7 +10,7 @@ class EditBook extends React.Component {
         console.log(event.target.elements.Title.value)
         console.log(event.target.elements.Author.value)
         console.log(event.target.elements.Year.value)
-        let basic = "http://backend:5000"
+        let basic = "/api"
         let path = basic.concat("/",event.target.elements.ID.value)
         console.log(path)
         const requestOptions = {

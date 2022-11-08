@@ -20,4 +20,7 @@ FROM nginx:stable-alpine
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/dist /usr/share/nginx/html
+RUN apk update
+RUN apk upgrade
+RUN apk add curl
 CMD ["nginx","-g","daemon off;"]

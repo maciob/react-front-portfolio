@@ -21,14 +21,14 @@ class BookList extends React.Component {
 
     componentDidMount() {
 
-        fetch(`http://backend:5000/`, {method: 'GET', mode: 'cors',credentials: 'include',redirect: 'follow'})
+        fetch("/api")
             .then(result => result.json())
             .then(books => this.setState({books})).catch(error => console.log(error))
     }
 
     render () {
         function handleDeleteClick( id ) {
-            let basic = "http://backend:5000"
+            let basic = "/api"
             let path = basic.concat("/",id)
             
             const requestOptions = {
