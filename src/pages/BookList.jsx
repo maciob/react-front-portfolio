@@ -20,33 +20,20 @@ class BookList extends React.Component {
 
 
     componentDidMount() {
-        fetch(`http://3.11.200.189:2137/`)
+
+        fetch(`http://backend:5000/`, {method: 'GET', mode: 'cors',credentials: 'include',redirect: 'follow'})
             .then(result => result.json())
-            .then(books => this.setState({books}))
-    }
-
-    handleDeleteClick( id ) {
-        let basic = "http://3.11.200.189:2137/"
-        let path = basic.concat(id)
-
-        const requestOptions = {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-        };
-        fetch('http://3.11.200.189:2137/', requestOptions).then(response => response.json())
-
-        return <Redirect to="/Booklist" />
-
+            .then(books => this.setState({books})).catch(error => console.log(error))
     }
 
     render () {
         function handleDeleteClick( id ) {
-            let basic = "http://3.11.200.189:2137"
+            let basic = "http://backend:5000"
             let path = basic.concat("/",id)
             
             const requestOptions = {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json'},
             };
             fetch(path, requestOptions)
                 .then(response => response.json())

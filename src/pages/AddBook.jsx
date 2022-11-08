@@ -12,7 +12,7 @@ class AddBook extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ Title: event.target.elements.Title.value, Author: event.target.elements.Author.value, Year: event.target.elements.Year.value })
         };
-        fetch('http://3.11.200.189:2137/', requestOptions)
+        fetch('http://backend:5000/', requestOptions)
             .then(response => response.json())
     }
     render() {
