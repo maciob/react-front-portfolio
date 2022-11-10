@@ -17,10 +17,8 @@ RUN npm install react
 RUN npm run build
 
 FROM nginx:stable-alpine
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/templates/nginx.conf.template
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/dist /usr/share/nginx/html
-RUN apk update
-RUN apk upgrade
-RUN apk add curl
-CMD ["nginx","-g","daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
+
